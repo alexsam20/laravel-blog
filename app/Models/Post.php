@@ -17,7 +17,7 @@ class Post extends Model
         'thumbnail',
         'body',
         'active',
-        'published_id',
+        'published_at',
         'user_id',
     ];
 
