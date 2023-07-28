@@ -7,10 +7,7 @@
             <x-post-item :post="$post"></x-post-item>
         @endforeach
 
-    <!-- Pagination -->
-    <div class="flex items-center py-8">
         {{$posts->onEachSide(1)->links()}}
-    </div>
 
     </section>
 </x-app-layout>
