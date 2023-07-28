@@ -43,11 +43,8 @@ class TextWidgetResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('key'),
-//                Tables\Columns\TextColumn::make('image'),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
-//                Tables\Columns\TextColumn::make('created_at')
-//                    ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
@@ -55,7 +52,6 @@ class TextWidgetResource extends Resource
                 //
             ])
             ->actions([
-//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
