@@ -32,7 +32,7 @@ class TextWidgetResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(2048),
-                Forms\Components\Textarea::make('content'),
+                Forms\Components\RichEditor::make('content'),
                 Forms\Components\Toggle::make('active')
                     ->required(),
             ])->columns(1);
@@ -44,8 +44,6 @@ class TextWidgetResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('key'),
 //                Tables\Columns\TextColumn::make('image'),
-                Tables\Columns\TextColumn::make('title'),
-//                Tables\Columns\TextColumn::make('content'),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
 //                Tables\Columns\TextColumn::make('created_at')
