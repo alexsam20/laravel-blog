@@ -16,15 +16,41 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function home(): View
     {
-        $posts = Post::query()
-            ->where('active', "=", 1)
+//        $posts = Post::query()
+//            ->where('active', "=", 1)
+//            ->whereDate('published_at', '<', Carbon::now())
+//            ->orderBy('published_at', 'desc')
+//            ->paginate(5);
+
+        // Latest post
+        $latestPost = Post::where('active', "=", 1)
             ->whereDate('published_at', '<', Carbon::now())
             ->orderBy('published_at', 'desc')
-            ->paginate(5);
+            ->limit(1)
+            ->first();
 
-        return view('home', compact('posts'));
+        // Show the most popular 3 posts based on upvotes
+        $popularPost = Post::query()
+            ->leftJoin('upvote_downvotes', 'posts.id', '=','upvote_downvotes.post_id')
+            ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+            ->where(function ($query){
+                $query->whereNull('upvote_downvotes.is_upvote')
+                    ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+            })
+            ->where('active', "=", 1)
+            ->whereDate('published_at', '<', Carbon::now())
+            ->orderByDesc('upvote_count')
+            ->groupBy('posts.id')
+            ->limit(5)
+            ->get();
+        // If authorized - Show recommended posts based on user upvotes
+        // Not authorized - Popular posts based on views
+
+        // Show recent categories with their latest posts
+
+        return view('home', compact('latestPost', 'popularPost'));
     }
 
     /**
