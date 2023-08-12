@@ -1,6 +1,6 @@
 <x-app-layout meta-title="Alexsers Blog" meta-description="alexsers personal blog">
     <div class="container max-w-4xl mx-auto py-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <!-- Latest Post -->
             <div class="col-span-2">
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
@@ -39,7 +39,7 @@
             </div>
         </div>
         <!-- Recommended posts -->
-        <div>
+        <div class="mb-8">
             <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                 Recommended Posts
             </h2>
@@ -54,6 +54,16 @@
             <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                 Recent Categories
             </h2>
+            @foreach($categories as $category)
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-center">{{$category->title}}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                        @foreach($category->publishedPosts()->limit(3)->get() as $post)
+                            <x-post-item :post="$post" :show-author="false" />
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>
