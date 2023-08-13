@@ -15,6 +15,7 @@ class Comments extends Component
 
     protected $listeners = [
         'commentCreated' => 'commentCreated',
+        'commentDeleted' => 'commentDeleted',
     ];
 
     public function mount(Post $post): void
@@ -32,5 +33,12 @@ class Comments extends Component
     {
         $comment = Comment::where('id', '=', $id)->first();
         $this->comments = $this->comments->prepend($comment);
+    }
+
+    public function commentDeleted(int $id)
+    {
+        $this->comments = $this->comments->reject(function ($comment) use ($id) {
+            return $comment->id == $id;
+        });
     }
 }
