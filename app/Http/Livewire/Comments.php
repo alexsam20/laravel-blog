@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class Comments extends Component
