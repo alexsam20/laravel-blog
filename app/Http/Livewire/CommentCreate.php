@@ -35,5 +35,6 @@ class CommentCreate extends Component
         ]);
 
         $this->emitUp('commentCreated', $comment->id);
+        $this->comment = '';
     }
 }
