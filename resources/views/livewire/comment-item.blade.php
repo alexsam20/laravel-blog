@@ -8,7 +8,9 @@
         </div>
         <div>
             <div>
-                <a href="#" class="font-semibold text-indigo-600">John Smith</a>
+                <a href="#" class="font-semibold text-indigo-600">
+                    {{$comment->user->name}}
+                </a>
                 - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
             <div class="text-gray-700">
