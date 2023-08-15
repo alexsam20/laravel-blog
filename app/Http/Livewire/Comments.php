@@ -33,13 +33,13 @@ class Comments extends Component
 //            $this->comments = $this->comments->prepend($comment);
 //        }
 //    }
-
+//
 //    public function commentDeleted(int $id)
 //    {
 //        $this->comments = $this->selectComments();
 //        $this->comments = $this->comments->reject(function ($comment) use ($id) {
 //            return $comment->id == $id;
-///       });
+//       });
 //    }
 
     public function selectComments()

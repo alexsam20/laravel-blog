@@ -1,4 +1,5 @@
-<x-app-layout meta-title="Alexsers Blog" meta-description="alexsers personal blog">
+<x-app-layout meta-title="Alexsers Blog"
+              meta-description="Lorem ipsum dolor sit amet">
     <div class="container max-w-4xl mx-auto py-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <!-- Latest Post -->
