@@ -26,7 +26,19 @@ php artisan key:generate --ansi
 php artisan migrate
 ```
 
-#### 6. Add Filament Admin user
+#### 6. Run NPM
 ```bash
-php artisan make:filament-user
+npm run dev
 ```
+
+#### 7. Add Filament Admin user
+```bash
+php artisan db:seed
+```
+
+#### 8. Use in browser:
+```bash
+http://localhost:8000/admin
+```
+email: admin@mail.com<br>
+password: admin123
